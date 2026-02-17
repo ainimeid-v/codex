@@ -1,4 +1,4 @@
-/* style.css final */
+/* style.css — final update: spacing + modal close single control + page3 tweaks */
 *{box-sizing:border-box;}
 html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;}
 body{
@@ -19,7 +19,7 @@ body{
 
 /* controls */
 .controls{display:flex;gap:10px;align-items:center;margin-bottom:12px;}
-input[type="search"]{flex:1;padding:12px;border-radius:12px;border:none;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,0.06);}
+input[type="search"], .search-box{flex:1;padding:12px;border-radius:12px;border:none;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,0.06);}
 
 /* checklist toggle button (hidden by default) */
 .checklist-toggle{display:none;padding:10px;border-radius:10px;border:none;background:#ffcf50;cursor:pointer;font-weight:800;}
@@ -36,8 +36,8 @@ input[type="search"]{flex:1;padding:12px;border-radius:12px;border:none;font-siz
 .card p.empty{padding:20px 0;color:#666;}
 
 /* detail layout */
-.detail-wrapper{display:flex;flex-direction:column;gap:12px;}
-.hero-card{position:relative;border-radius:16px;overflow:hidden;}
+.detail-wrapper{display:flex;flex-direction:column;gap:18px;}
+.hero-card{position:relative;border-radius:16px;overflow:hidden; margin-top:12px;}
 .hero-img{width:100%;height:320px;object-fit:cover;display:block;}
 .hero-overlay{position:absolute;left:12px;right:12px;bottom:12px;background:linear-gradient(180deg,rgba(255,255,255,0.0),rgba(255,255,255,0.95));padding:12px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.12);}
 .hero-overlay h2{margin:0;font-size:22px;}
@@ -46,9 +46,17 @@ input[type="search"]{flex:1;padding:12px;border-radius:12px;border:none;font-siz
 .hero-actions button{padding:8px 12px;border-radius:10px;border:none;background:#ffb300;color:#222;font-weight:700;cursor:pointer;}
 
 /* extras */
-.extras{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px;}
+.extras{display:flex;gap:12px;justify-content:flex-start;flex-wrap:wrap;margin-top:8px;}
 .extra-thumb{width:30%;min-width:90px;cursor:pointer;}
 .extra-thumb img{width:100%;height:80px;object-fit:cover;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08);}
+
+/* add spacing between extras and nav buttons */
+.detail-actions{
+  display:flex;
+  gap:12px;
+  margin-top:22px;      /* <-- lebih jarak dari gambar */
+  margin-bottom:30px;   /* <-- jarak bawah agar tidak mepet */
+}
 
 /* modal */
 .img-modal{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;padding:18px;}
@@ -56,7 +64,7 @@ input[type="search"]{flex:1;padding:12px;border-radius:12px;border:none;font-siz
 .img-modal-content img{width:100%;max-height:70vh;object-fit:contain;border-radius:8px;}
 .modal-close{position:absolute;right:12px;top:12px;background:#222;color:#fff;border:none;padding:6px 10px;border-radius:8px;cursor:pointer;}
 .modal-actions{margin-top:12px;}
-.modal-actions button{padding:8px 12px;border-radius:8px;border:none;background:#ffd54f;cursor:pointer;font-weight:700;}
+.modal-actions button{padding:8px 12px;border-radius:8px;border:none;background:#ffd54f;cursor:pointer;font-weight:700;display:none;} /* hidden: we removed textual Close */
 
 /* checklist panel */
 .checklist-panel{background:linear-gradient(180deg,#fffef6,#fff9e6);border-radius:12px;padding:10px;margin-bottom:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
@@ -74,4 +82,5 @@ input[type="search"]{flex:1;padding:12px;border-radius:12px;border:none;font-siz
   .card img{height:140px;}
   .extra-thumb img{height:64px;}
   .controls{flex-direction:column;gap:8px;}
+  .detail-actions{flex-direction:row;gap:10px;margin-top:18px;margin-bottom:24px;}
 }
