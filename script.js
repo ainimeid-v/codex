@@ -1,4 +1,4 @@
-// script.js - final checked version
+// script.js - FIXED: remove hero overlay buttons so Back/Home appear only once (the static buttons in detail.html)
 
 // Navigation helpers
 function goHome(){ window.location.href = "index.html"; }
@@ -42,9 +42,7 @@ function renderCategories(){
     const div = document.createElement("div");
     div.className = "card cat-card";
     div.tabIndex = 0;
-    div.innerHTML = `
-      <h3>${cat.title}</h3>
-    `;
+    div.innerHTML = `<h3>${cat.title}</h3>`;
     div.onclick = () => {
       localStorage.setItem("activeCategory", key);
       window.location.href = "items.html";
@@ -163,6 +161,7 @@ function renderItems(){
 
 /* =========================
    PAGE 3: detail (main wallpaper fixed, extras popup-only)
+   IMPORTANT: JS WILL NOT CREATE NAV BUTTONS — HTML provides single Back/Home
 ========================= */
 function ensureDetailOverlay(){
   let ov = document.getElementById("detailOverlay");
@@ -191,7 +190,7 @@ function renderDetail(){
   const selected = findItemById(id);
   if(!selected){ container.innerHTML = "<div class='card'><h3>Item not found</h3></div>"; return; }
 
-  // MAIN wallpaper fixed to selected.images.main (no set/remove)
+  // MAIN wallpaper fixed to selected.images.main
   const wallpaperUrl = (selected.images && selected.images.main) ? selected.images.main : "";
   if(wallpaperUrl){
     document.body.style.backgroundImage = `url('${wallpaperUrl}')`;
@@ -208,6 +207,7 @@ function renderDetail(){
   const mainImg = (selected.images && selected.images.main) ? selected.images.main : "";
   const extras = (selected.images && selected.images.extras) ? selected.images.extras.slice(0,3) : [];
 
+  // Render hero and extras WITHOUT adding nav buttons here
   container.innerHTML = `
     <div class="detail-wrapper">
       <div class="detail-card hero-card">
@@ -215,10 +215,7 @@ function renderDetail(){
         <div class="hero-overlay">
           <h2>${selected.name}</h2>
           <p>${selected.desc}</p>
-          <div class="hero-actions">
-            <button onclick="goBack()">Back</button>
-            <button onclick="goHome()">Home</button>
-          </div>
+          <!-- NOTE: no buttons here to avoid duplicates -->
         </div>
       </div>
 
@@ -255,7 +252,7 @@ document.addEventListener("click", function(e){
   if(e.target === modal) closeImageModal();
 });
 
-/* Document init: render appropriate page content */
+/* Document init */
 document.addEventListener("DOMContentLoaded", function(){
   renderCategories();
 
