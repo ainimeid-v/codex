@@ -13,7 +13,7 @@
     <div id="detailContainer"></div>
 
     <div class="detail-actions">
-      <!-- Only one Back and one Home button (no duplicates) -->
+      <!-- Only one Back and one Home button -->
       <button class="nav-btn" onclick="goBack()" aria-label="Back">← Back</button>
       <button class="nav-btn" onclick="goHome()" aria-label="Home">🏠 Home</button>
     </div>
@@ -25,7 +25,8 @@
       <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
       <img id="imgModalImg" src="" alt="Preview image">
       <div class="modal-actions">
-        <button onclick="closeImageModal()">Close</button>
+        <!-- NOTE: removed textual "Close" button to keep only the X close control -->
+        <!-- <button onclick="closeImageModal()">Close</button> --> 
       </div>
     </div>
   </div>
